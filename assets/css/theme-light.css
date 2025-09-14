@@ -1,0 +1,62 @@
+/* Light Theme */
+:root {
+  /* Colors */
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --text: #1e293b;
+  --muted: #64748b;
+  --primary: #3b82f6;
+  --accent: #8b5cf6;
+  --warn: #f59e0b;
+  --ok: #22c55e;
+  --grid: #e2e8f0;
+
+  /* Border */
+  --line: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--grid);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: var(--text);
+}
+
+/* Focus Styles */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Placeholder Text */
+::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+/* Autofill Styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--bg) inset;
+  -webkit-text-fill-color: var(--text);
+  transition: background-color 5000s ease-in-out 0s;
+}
