@@ -28,7 +28,7 @@
 }
 
 .card--kpi {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 .card--form {
@@ -184,7 +184,7 @@
 /* Chart Container */
 .chart-container {
   position: relative;
-  height: 300px;
+  height: 320px;
   width: 100%;
 }
 

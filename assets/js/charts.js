@@ -21,7 +21,7 @@ window.StudyGraphCharts = {
 
     // Show placeholder when no data
     const hasData =
-      config?.data?.datasets?.some((ds) => Array.isArray(ds.data) && ds.data.some((v) => v))
+      config?.data?.datasets?.some((ds) => Array.isArray(ds.data) && ds.data.length > 0)
     if (!hasData) {
       const placeholder = document.createElement("div")
       placeholder.className = "chart-placeholder"
@@ -136,10 +136,6 @@ window.StudyGraphCharts = {
   createSubjectPieChart(canvasId, days = 30) {
     const subjectStats = this.StudyGraphStore.getSubjectStats(days)
     const subjects = Object.keys(subjectStats)
-
-    if (subjects.length === 0) {
-      return null
-    }
 
     const colors = [
       "rgba(106, 163, 255, 0.8)",
