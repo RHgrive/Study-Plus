@@ -1,4 +1,10 @@
 // Database Layer using IndexedDB
+const promisifyRequest = (request) =>
+  new Promise((resolve, reject) => {
+    request.onsuccess = () => resolve(request.result)
+    request.onerror = () => reject(request.error)
+  })
+
 window.StudyGraphDB = {
   dbName: "studygraph_v2",
   version: 1,
@@ -56,37 +62,37 @@ window.StudyGraphDB = {
   async add(storeName, data) {
     const transaction = this.db.transaction([storeName], "readwrite")
     const store = transaction.objectStore(storeName)
-    return store.add(data)
+    return promisifyRequest(store.add(data))
   },
 
   async get(storeName, id) {
     const transaction = this.db.transaction([storeName], "readonly")
     const store = transaction.objectStore(storeName)
-    return store.get(id)
+    return promisifyRequest(store.get(id))
   },
 
   async getAll(storeName) {
     const transaction = this.db.transaction([storeName], "readonly")
     const store = transaction.objectStore(storeName)
-    return store.getAll()
+    return promisifyRequest(store.getAll())
   },
 
   async update(storeName, data) {
     const transaction = this.db.transaction([storeName], "readwrite")
     const store = transaction.objectStore(storeName)
-    return store.put(data)
+    return promisifyRequest(store.put(data))
   },
 
   async delete(storeName, id) {
     const transaction = this.db.transaction([storeName], "readwrite")
     const store = transaction.objectStore(storeName)
-    return store.delete(id)
+    return promisifyRequest(store.delete(id))
   },
 
   async clear(storeName) {
     const transaction = this.db.transaction([storeName], "readwrite")
     const store = transaction.objectStore(storeName)
-    return store.clear()
+    return promisifyRequest(store.clear())
   },
 
   // Books operations
@@ -125,7 +131,7 @@ window.StudyGraphDB = {
     const transaction = this.db.transaction(["plans"], "readonly")
     const store = transaction.objectStore(storeName)
     const index = store.index("date")
-    return index.get(date)
+    return promisifyRequest(index.get(date))
   },
 
   async getPlans() {
@@ -157,14 +163,14 @@ window.StudyGraphDB = {
     const store = transaction.objectStore("logs")
     const index = store.index("date")
     const range = IDBKeyRange.bound(fromDate, toDate)
-    return index.getAll(range)
+    return promisifyRequest(index.getAll(range))
   },
 
   async getLogsByBook(bookId) {
     const transaction = this.db.transaction(["logs"], "readonly")
     const store = transaction.objectStore("logs")
     const index = store.index("bookId")
-    return index.getAll(bookId)
+    return promisifyRequest(index.getAll(bookId))
   },
 
   async updateLog(log) {
