@@ -188,6 +188,18 @@
   width: 100%;
 }
 
+.chart-placeholder,
+.chart-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--muted);
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
+
 /* Calendar */
 .calendar {
   /* Calendar base styles */

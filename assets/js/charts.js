@@ -9,6 +9,27 @@ window.StudyGraphCharts = {
     const canvas = document.getElementById(canvasId)
     if (!canvas) return null
 
+    // Ensure Chart.js is available
+    if (typeof window.Chart === "undefined") {
+      console.error("Chart.js is not loaded")
+      const placeholder = document.createElement("div")
+      placeholder.className = "chart-error"
+      placeholder.textContent = "グラフを表示できません"
+      canvas.replaceWith(placeholder)
+      return null
+    }
+
+    // Show placeholder when no data
+    const hasData =
+      config?.data?.datasets?.some((ds) => Array.isArray(ds.data) && ds.data.some((v) => v))
+    if (!hasData) {
+      const placeholder = document.createElement("div")
+      placeholder.className = "chart-placeholder"
+      placeholder.textContent = "データがありません"
+      canvas.replaceWith(placeholder)
+      return null
+    }
+
     // Destroy existing chart
     if (this.charts[canvasId]) {
       this.charts[canvasId].destroy()
@@ -16,7 +37,7 @@ window.StudyGraphCharts = {
 
     // Create new chart
     const ctx = canvas.getContext("2d")
-    this.charts[canvasId] = new Chart(ctx, config)
+    this.charts[canvasId] = new window.Chart(ctx, config)
     return this.charts[canvasId]
   },
 
@@ -223,6 +244,14 @@ window.StudyGraphCharts = {
     if (!container) return
 
     container.innerHTML = ""
+
+    if (this.StudyGraphStore.state.logs.length === 0) {
+      const placeholder = document.createElement("div")
+      placeholder.className = "chart-placeholder"
+      placeholder.textContent = "データがありません"
+      container.appendChild(placeholder)
+      return
+    }
 
     // Generate year data
     const startDate = new Date(year, 0, 1)
