@@ -102,38 +102,3 @@ window.StudyGraphRouter = {
   },
 }
 
-// Declare StudyGraphStore variable
-window.StudyGraphStore = {
-  setRoute(route) {
-    // Implementation for setting route in store
-    console.log(`Route set to: ${route}`)
-  },
-}
-
-// Declare StudyGraphUI variable
-window.StudyGraphUI = {
-  initDashboard() {
-    // Implementation for initializing dashboard
-    console.log("Initializing Dashboard")
-  },
-  initPlanner() {
-    // Implementation for initializing planner
-    console.log("Initializing Planner")
-  },
-  initLogs() {
-    // Implementation for initializing logs
-    console.log("Initializing Logs")
-  },
-  initLibrary() {
-    // Implementation for initializing library
-    console.log("Initializing Library")
-  },
-  initAnalytics() {
-    // Implementation for initializing analytics
-    console.log("Initializing Analytics")
-  },
-  initSettings() {
-    // Implementation for initializing settings
-    console.log("Initializing Settings")
-  },
-}
