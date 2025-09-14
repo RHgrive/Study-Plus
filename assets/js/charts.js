@@ -1,4 +1,3 @@
-import { Chart } from "@/components/ui/chart"
 // Chart utilities using Chart.js
 window.StudyGraphCharts = {
   charts: {},
