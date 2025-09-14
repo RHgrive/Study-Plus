@@ -29,6 +29,14 @@ window.StudyGraphApp = {
       const accent = window.StudyGraphStore.state.prefs.accent
       document.documentElement.style.setProperty("--primary", accent)
 
+      const el = document.getElementById("countdown-days")
+      if (el) {
+        const target = new Date("2026-01-17T00:00:00+09:00")
+        const now = new Date()
+        const diff = Math.ceil((target - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000)
+        el.textContent = diff > 0 ? diff : 0
+      }
+
       console.log("StudyGraph V2 initialized successfully")
     } catch (error) {
       console.error("Failed to initialize StudyGraph V2:", error)

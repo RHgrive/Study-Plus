@@ -10,6 +10,7 @@ window.StudyGraphStore = {
       firstDayOfWeek: 1,
       timeFormat: "HH:mm",
       displayUnit: "page-first",
+      weeklyTargetMinutes: 2400,
     },
     ui: {
       route: "#/dashboard",
