@@ -52,7 +52,7 @@
 .view__content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--space-6) var(--space-4);
+  padding: var(--space-6);
 }
 
 /* Navigation Tabs */
@@ -119,7 +119,7 @@
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
+  gap: var(--space-6);
 }
 
 /* Planner Layout */
