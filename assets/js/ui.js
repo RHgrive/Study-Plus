@@ -57,8 +57,13 @@ window.StudyGraphUI = {
   },
 
   // Update dashboard chart
-  updateDashboardChart() {
-    window.StudyGraphCharts.createDailyRateChart("chart-daily-rate", 7)
+  updateDashboardChart(days = 7) {
+    window.StudyGraphCharts.createWeeklyStackedTimeChart("chart-daily-rate", 7)
+    window.StudyGraphCharts.createBookBreakdownChart("chart-book-breakdown", days)
+    window.StudyGraphCharts.createSubjectPieChart("chart-subject-pie", days)
+    window.StudyGraphCharts.createCumulativeChart("chart-cumulative", days)
+    const week = window.StudyGraphStore.getWeekStats()
+    window.StudyGraphCharts.createGoalDonutChart("chart-week-goal", week.minutes, window.StudyGraphStore.state.prefs.weeklyTargetMinutes || 2400)
   },
 
   // Initialize planner

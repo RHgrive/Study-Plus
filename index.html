@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/theme-dark.css" id="theme-stylesheet">
     
     <!-- Vendor Libraries -->
-    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script defer src="assets/vendor/chart.umd.min.js"></script>
     <script defer src="assets/vendor/idb-keyval-iife.min.js"></script>
     
     <!-- App Scripts -->
@@ -83,6 +83,20 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="card card--kpi">
+                            <div class="kpi-card">
+                                <div class="kpi-card__header">
+                                    <h3>カウントダウン</h3>
+                                </div>
+                                <div class="kpi-card__content">
+                                    <div class="gauge-wrap">
+                                        <div id="countdown-days" style="font-size:48px;font-weight:700;line-height:1">0</div>
+                                        <div class="gauge-label">共通テストまで</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Quick Input -->
@@ -136,11 +150,22 @@
                     <!-- Weekly Chart -->
                     <div class="card card--chart">
                         <div class="card__header">
-                            <h2>7日間の達成率</h2>
+                            <h2>7日間の学習時間</h2>
                         </div>
                         <div class="card__content">
                             <div class="chart-container">
                                 <canvas id="chart-daily-rate"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card--chart">
+                        <div class="card__header">
+                            <h2>今週の目標</h2>
+                        </div>
+                        <div class="card__content">
+                            <div class="chart-container">
+                                <canvas id="chart-week-goal"></canvas>
                             </div>
                         </div>
                     </div>
